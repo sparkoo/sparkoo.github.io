@@ -2,9 +2,9 @@
 
 http://sparkoo.github.io
 
-powered by [jekyll](http://jekyllrb.com/)
+powered by [Jekyll](http://jekyllrb.com/) and [Jekyll Now](http://www.jekyllnow.com/)
 
 ## run with:
 ```
-bundle exec jekyll serve
+jekyll serve
 ```
