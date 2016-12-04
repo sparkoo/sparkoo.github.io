@@ -1,0 +1,12 @@
+---
+layout:     post
+title:      "Java9 - jshell [2]"
+date:       2016-12-4
+categories: java9 jshell
+---
+
+In [first part] we've looked into absolute basics of **JShell**. No I will show another features that help you customize **JShell** and make work with it more easy and fun.
+
+## 
+
+[first part]: /java9-jshell-1
