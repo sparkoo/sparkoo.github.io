@@ -9,7 +9,7 @@ name: Michal Vala
 description: Java developer
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: images/avatar2.png
+avatar: /images/avatar2.png
 
 #
 # Flags below are optional
