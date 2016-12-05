@@ -7,6 +7,8 @@ categories: java9 jshell
 
 Many languages has it's own [REPL](Read–Eval–Print loop). Now time grows to have one in java. It will come with Java 9 under [JEP222]. What does it mean for us, developers? Many of us have already met with REPL in languages like Scala, Clojure, Groovy, Python, Ruby and many more. For the rest of you, it's basically a command line, where you can enter commands for specific programming language.
 
+![jshell]({{ site.url }}/assets/jshell/jshell.png)
+
 ## Why should I want it?
  - **microtesting** - We always try to get as quick response loop as possible. Now shortest loop is probably _unit test_ or write simple class with main and run. With **JShell** we'll get tool to short and simplify this loop for experimenting.
  - **teach** - You want to show your mom what you do 10 hours a day in front of a computer. So you create a java file and start writing some strange words like `package`, `public`, `void`, `String` and many weird characters `(`, `)`, `;`... it's just too much and we didn't event get to compilation. With Java 9 this will get much easier. You write `4+9` hit enter and it prints `13`, easy!
