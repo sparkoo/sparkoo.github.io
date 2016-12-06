@@ -141,5 +141,56 @@ Hello
 {% endhighlight %}
 
 ### history
+Command `/history` prints all commands you have entered so far
+
+{% highlight java %}
+jshell> /history
+
+int a = 5
+class Point {
+int x;
+int y;
+Point(int x, int y) {
+this.x = x;
+this.y = y;
+}
+}
+Point p = new Point(2,4)
+p.x
+/drop a
+a
+/history
+{% endhighlight %}
+
+That's nothing surprising. Very similar is `/list`, but here I can see the source of snippets and only valid ones. So if I dropped variable `a`, I can see it in `/history`, but not in `/list`
+{% highlight java %}
+jshell> /list
+
+   2 : class Point {
+       int x;
+       int y;
+       Point(int x, int y) {
+       this.x = x;
+       this.y = y;
+       }
+       }
+   3 : Point p = new Point(2,4);
+   4 : p.x
+{% endhighlight %}
+
+`/list` is much more powerful. It shows snipped ids, so I can ask for specific one and as you can see, I can see also dropped variable `a`
+{% highlight java %}
+jshell> /list 3
+
+   3 : Point p = new Point(2,4);
+
+jshell> /list 1
+
+   1 : int a = 5
+{% endhighlight %}
+
+Nothing surprising, but that's not all I can do. I can also modify history. When I enter `/edit`, beautifully ugly windows pops up
+
+![jshell]({{ site.url }}/assets/jshell/jshellEditPad.png) 
 
 [first part]: /java9-jshell-1
