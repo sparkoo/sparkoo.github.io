@@ -5,8 +5,141 @@ date:       2016-12-4
 categories: java9 jshell
 ---
 
-In [first part] we've looked into absolute basics of **JShell**. No I will show another features that help you customize **JShell** and make work with it more easy and fun.
+In [first part] we've looked on absolute basics of **JShell**. Now I'm going show another features that help you customize **JShell** and make work with it more easy and fun.
 
-## 
+<!--more-->
+
+![jshell]({{ site.url }}/assets/jshell/jshell.png) 
+
+## Tab completion
+No-one can remember every method in every class and programmers are by nature lazy people. You're probably used to tab completion from your linux/osx/windows/whatever terminal and good news is that **JShell** can do it too. So let's look
+
+{% highlight java %}
+jshell> System.
+Logger                 LoggerFinder           arraycopy(             class                  
+clearProperty(         console()              currentTimeMillis()    err                    
+exit(                  gc()                   getLogger(             getProperties()        
+getProperty(           getSecurityManager()   getenv(                identityHashCode(      
+in                     inheritedChannel()     lineSeparator()        load(                  
+loadLibrary(           mapLibraryName(        nanoTime()             out                    
+runFinalization()      runFinalizersOnExit(   setErr(                setIn(                 
+setOut(                setProperties(         setProperty(           setSecurityManager(    
+
+jshell> System.out.
+append(        checkError()   close()        equals(        flush()        format(        
+getClass()     hashCode()     notify()       notifyAll()    print(         printf(        
+println(       toString()     wait(          write(         
+
+jshell> System.out.print
+print(     printf(    println(   
+
+jshell> System.out.println(
+println(   
+
+jshell> System.out.println(
+{% endhighlight %}
+
+As you can see, **JShell** helps with listing methods. When I write `System.` and hit `Tab`, I'll get list of all methods. I can start writing method name, like `System.out.print` and I'll get all methods that starts with `..print`. If only one option left, **JShell** complete that option for me. For example `System.out.printl` + `Tab` -> `System.out.println(`.
+
+Of course it works with all classes. Let's use class from first part of article
+
+{% highlight java %}
+jshell> class Square {
+   ...> private int side;
+   ...> Square(int side) { this.side = side; }
+   ...> int perimeter() { return 4 * side; }
+   ...> int area() { return side * side; }
+   ...> }
+|  created class Square
+
+jshell> Square s = new Square(4)
+s ==> Square@5622fdf
+
+jshell> s.
+area()        equals(       getClass()    hashCode()    notify()      notifyAll()   
+perimeter()   toString()    wait(
+{% endhighlight %}
+
+## JShell commands
+So far we used just java "commands". However, **JShell** can accept another type of commands. These always start with `/` and it means that I'm talking to **JShell**. Every other case means that I'm talking to **JVM**.
+
+So let's look what it offers. Of course tab completion works
+{% highlight java %}
+jshell> /
+/!            /?            /classpath    /drop         /edit         /exit         
+/help         /history      /imports      /list         /methods      /open         
+/reload       /reset        /save         /set          /types        /vars
+{% endhighlight %}
+
+### customize
+There are 4 predefined modes of verbosity *silent*, *concise*, *normal* and *verbose*. Default is *normal*. If you want slight less verbosity, *concise* is a good choice. You can also set your own profile, there are many configuration options.
+
+
+**Normal** is used in all previous examples. It's little too stretched to my taste, but it's ok default choice.
+{% highlight java %}
+jshell> /set feedback normal
+|  Feedback mode: normal
+
+jshell> 5
+$13 ==> 5
+
+jshell> int i = 6
+i ==> 6
+
+jshell> i
+i ==> 6
+
+jshell> System.out.println("Hello")
+Hello
+{% endhighlight %}
+
+
+**Concise** is my favorite. It's more compact, but still prints all what I need.
+{% highlight java %}
+jshell> /set feedback concise 
+jshell> 5
+$9 ==> 5
+jshell> int i = 6
+jshell> i
+i ==> 6
+jshell> System.out.println("Hello")
+Hello
+{% endhighlight %}
+
+
+In **silent** mode you can't even see implicit variables, even when you want to see variable value you have to print it.
+{% highlight java %}
+jshell> /set feedback silent
+-> 5
+-> int i = 6
+-> i
+-> System.out.println("Hello")
+Hello
+{% endhighlight %}
+
+
+**Verbose** is in my opinion too chatty. It basically writes in second line meaning of the first line so maybe for newbies it might be useful.
+{% highlight java %}
+jshell> /set feedback verbose
+|  Feedback mode: verbose
+
+jshell> 5
+$5 ==> 5
+|  created scratch variable $5 : int
+
+jshell> int i = 6
+i ==> 6
+|  modified variable i : int
+|    update overwrote variable i : int
+
+jshell> i
+i ==> 6
+|  value of i : int
+
+jshell> System.out.println("Hello")
+Hello
+{% endhighlight %}
+
+### history
 
 [first part]: /java9-jshell-1

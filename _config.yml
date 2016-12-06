@@ -85,3 +85,5 @@ exclude:
   - README.md
   - CNAME
   - sparkoo.github.io.sublime-project
+
+excerpt_separator: "<!--more-->"
