@@ -189,8 +189,6 @@ jshell> /list 1
    1 : int a = 5
 {% endhighlight %}
 
-Nothing surprising, but that's not all I can do. I can also modify history. When I enter `/edit`, beautifully ugly windows pops up
 
-![jshell]({{ site.url }}/assets/jshell/jshellEditPad.png) 
 
 [first part]: /java9-jshell-1
