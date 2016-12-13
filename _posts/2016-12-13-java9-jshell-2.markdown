@@ -71,6 +71,8 @@ jshell> /
 /reload       /reset        /save         /set          /types        /vars
 {% endhighlight %}
 
+`/help` is useful but too long output, you may try it yourself. For each command you can use `/help [command]` (e.g. `/help /list`) and you'll see detailed help for given command.
+
 ### customize
 There are 4 predefined modes of verbosity *silent*, *concise*, *normal* and *verbose*. Default is *normal*. If you want slight less verbosity, *concise* is a good choice. You can also set your own profile, there are many configuration options.
 
@@ -140,7 +142,11 @@ jshell> System.out.println("Hello")
 Hello
 {% endhighlight %}
 
-### history
+
+**JShell** is much more customizable. To see more details check `/help /set` and you'll see many many options.
+
+
+### /history /list
 Command `/history` prints all commands you have entered so far
 
 {% highlight java %}
@@ -189,6 +195,151 @@ jshell> /list 1
    1 : int a = 5
 {% endhighlight %}
 
+To see what variables or methods I have defined, use `/v` or `/m`. For redo all steps use `/reload` and if you want to start from the beginning with the clean sheet, simple `/reset` do so.
 
+{% highlight java %}
+jshell> int a = 5
+a ==> 5
+
+jshell> int b = 6
+b ==> 6
+
+jshell> int add(int a, int b) { return a + b; }
+|  created method add(int,int)
+
+jshell> add(a, b)
+$4 ==> 11
+
+jshell> /v
+|    int a = 5
+|    int b = 6
+|    int $4 = 11
+
+jshell> /m
+|    printf (String,Object...)void
+|    add (int,int)int
+
+jshell> /list
+
+   1 : int a = 5;
+   2 : int b = 6;
+   3 : int add(int a, int b) { return a + b; }
+   4 : add(a, b)
+
+jshell> /reload
+|  Restarting and restoring state.
+-: int a = 5;
+-: int b = 6;
+-: int add(int a, int b) { return a + b; }
+-: add(a, b)
+
+jshell> /list
+
+   1 : int a = 5;
+   2 : int b = 6;
+   3 : int add(int a, int b) { return a + b; }
+   4 : add(a, b)
+
+jshell> /reset
+|  Resetting state.
+
+jshell> /v
+
+jshell> /m
+|    printf (String,Object...)void
+
+jshell> /list
+
+
+{% endhighlight %}
+
+### /edit
+Let's say we want to change some variable/method. We can simply assign new value, like you probably expect
+{% highlight java %}
+jshell> int i = 50
+i ==> 50
+
+jshell> int i = 55
+i ==> 55
+
+jshell> i = 60
+i ==> 60
+
+jshell> i
+i ==> 60
+
+jshell> void print() { System.out.println("Hello"); }
+|  created method print()
+
+jshell> print()
+Hello
+
+jshell> void print() { System.out.println("Hello World!"); }
+|  modified method print()
+
+jshell> print()
+Hello World!
+{% endhighlight %}
+
+or we can use `/edit`. It opens beautifully ugly window
+{% highlight java %}
+jshell> /edit
+{% endhighlight %}
+![jshellEditPad]({{ site.url }}/assets/jshell/jshellEditPad.png)
+
+You can see all history there, but when you hit accept, it just evaluate changed snippets (lines). It won't reevaluate all affected snippets, which does make sense. So for example when I have 
+{% highlight java %}
+int a = 5;
+int b = 6;
+int c = a + b;
+{% endhighlight %}
+and I change a to `int a = 4`, `c` will be still `11`.
+
+It's possible to edit just one variable/method with simple `/edit a`.
+
+
+### /save /open
+Last thing I want to show you is saving/reading to/from files. It's really easy and useful. To save current session enter `/save [filename]`
+
+{% highlight java %}
+jshell> int a = 5
+a ==> 5
+
+jshell> int b = 6
+b ==> 6
+
+jshell> int c = a + b
+c ==> 11
+
+jshell> /save example
+{% endhighlight %}
+
+This creates in current folder file with name "example" which looks as simple as you might expect
+{% highlight java %}
+mvala[~] λ cat example 
+int a = 5;
+int b = 6;
+int c = a + b;
+{% endhighlight %}
+
+and reading file is the same
+{% highlight java %}
+jshell> /open example
+
+jshell> /v
+|    int a = 5
+|    int b = 6
+|    int c = 11
+
+jshell> /list
+
+   1 : int a = 5;
+   2 : int b = 6;
+   3 : int c = a + b;
+{% endhighlight %}
+
+## Conclusion
+
+Enough for now. We've seen some customization, checked tab completion, file save and read and few other **JShell** commands. Next time stuff like *classpath*, *imports*, ...
 
 [first part]: /java9-jshell-1
