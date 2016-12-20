@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "Java 9 Optional improvements"
-date:       2016-12-13
+title:      "Java 9 Optional new API"
+date:       2016-12-20
 categories: java9 optional api
 ---
 
@@ -104,5 +104,49 @@ $11 ==> Optional.empty
 {% endhighlight %}
 
 ## Stream\<T\> stream()
+
+When you're familiar with stream, this one is easy. If *Optional* has a non-null value, you'll get stream with that one value, otherwise empty stream. Then you can use all stream methods as you're used to. It's same like if you have list with one or no element.
+
+{% highlight java %}
+jshell> Optional.of("Hello").stream().filter(s -> s.length() > 2).forEach(s -> printf("%s", s))
+Hello
+jshell> Optional.of("Hello").stream().filter(s -> s.length() > 8).forEach(s -> printf("%s", s))
+
+jshell> Optional<String> o = Optional.empty()
+o ==> Optional.empty
+
+jshell> o.stream().forEach(s -> printf("%s", s))
+
+{% endhighlight %}
+
+In first 2 examples I have an *Optional* with `"Hello"` string inside. I'm using stream with filter method. First case pass filter condition and prints `"Hello"`, second case don't pass through filter.
+
+In last example I have empty *Optional* so even if I simply run `forEach` with print, nothing is printed and no exception is thrown, because stream is empty.
+
+I see `.stream()` useful especially in case when you want to get collection of optionals so you can `flatMap` these optionals. Also joining streams of *Optionals* might be sometimes handy.
+
+## ifPresentOrElse((element) -> ...), () -> ...))
+
+This one I really missed in Java 8. You have an *Optional* and you want do something if value is present and something else if not. In my opinion very basic requirement I want from *Optional*. Typically when I get *Optional* from service and I want to do something with returned entity and log in case of no entity found. So far I have to do something like this
+{% highlight java %}
+Optional<User> foundUser = service.findUser(id);
+if (foundUser.isPresent()) {
+    System.out.println(foundUser.get().getUsername());
+} else {
+    System.out.println("user [" + id + "] not found");
+}
+{% endhighlight %}
+
+which doesn't add any value as simple `foundUser != null` would do the same job. But now it looks much better
+{% highlight java %}
+service.findUser(id).ifPresentOrElse(
+    (u) -> System.out.println(u.getUsername()),
+    () -> System.out.println("user [" + id + "] not found"));
+{% endhighlight %}
+
+I've got rid of unnecessary `Optional<User>` variable.
+
+## Conclusion
+*Optional* has got 3 new methods. I think most usage will find `ifPresentOrElse`, which I really missed in Java 8. `stream` and `or` are also nice enhancements, but in my opinion not so important as `ifPresentOrElse`. They'll be useful in more special cases.
 
 [JShell]: {{ site.url }}/java9-jshell-1/
