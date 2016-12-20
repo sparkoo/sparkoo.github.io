@@ -5,7 +5,7 @@ date:       2016-12-20
 categories: java9 optional api
 ---
 
-**Optional** was introduced in Java8. It became very useful to define cleaner APIs, where we can define whether return value from method can be null. Another usage is alternative syntax to `if` statement and we would find more. *Optional* has got 3 new methods in *Java9* so let's look what new we can do with it.
+**Optional** was introduced in Java8. It became very useful to define cleaner API, where we can define whether return value from method can be null. Another usage is alternative syntax to `if` statement and we would probably find some more. *Optional* has got 3 new methods in *Java9* so let's look what new we can do with it.
 
 <!--more-->
 
