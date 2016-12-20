@@ -44,18 +44,18 @@ $4 ==> Optional[world]
 
 So it's little shorter and cleaner, nice. 
 
-But I think that real power is in `Supplier` parameter. That means that if we call `or` on empty *Optional*, we can execute any code that gets us some *Optional* and of course it's executed lazily
+But I think that real power is in `Supplier` parameter. That means that if we call `or` on empty *Optional*, we can execute any code that gets us some *Optional*
 
 {% highlight java %}
-jshell> opt1.or(() -> { System.out.println("this is never executed"); return opt2; })
+jshell> opt1.or(() -> { System.out.println("this is not executed"); return opt2; })
 $5 ==> Optional[hello]
 
-jshell> Optional.empty().or(() -> { System.out.println("now it is executed"); return opt2; })
-now it is executed
+jshell> Optional.empty().or(() -> { System.out.println("this is executed"); return opt2; })
+this is executed
 $7 ==> Optional[world]
 {% endhighlight %}
 
-As you can see, in the first case, text is not printed so that potentially time consuming computation isn't executed when not needed. In second case, when it's called on empty *Optional* it's executed.
+As you can see, in the first case, text is not printed. In second case, when it's called on empty *Optional* it's executed. For example we can call some other service to get the value.
 
 ### NullPointerException
 
@@ -96,7 +96,9 @@ $9 ==> Optional[hello]
 {% endhighlight %}
 
 
-In these 2 cases, `NullPointerException` is thrown. If it's called on empty *Optional* and supplier return another empty *Optional*, it's perfectly valid code
+So in these 2 cases, `NullPointerException` is thrown. 
+
+But, if it's called on empty *Optional* and supplier return another empty *Optional*, it's perfectly valid code
 
 {% highlight java %}
 jshell> Optional.empty().or(() -> Optional.empty())
@@ -105,12 +107,14 @@ $11 ==> Optional.empty
 
 ## Stream\<T\> stream()
 
-When you're familiar with stream, this one is easy. If *Optional* has a non-null value, you'll get stream with that one value, otherwise empty stream. Then you can use all stream methods as you're used to. It's same like if you have list with one or no element.
+When you're familiar with stream, this one is easy. If *Optional* has a non-null value, you'll get stream with that one value, otherwise empty stream. Then you can use all stream methods as you're used to. It's same like if you have a collection with one or no element and call `stream()`.
 
 {% highlight java %}
-jshell> Optional.of("Hello").stream().filter(s -> s.length() > 2).forEach(s -> printf("%s", s))
+jshell> Optional.of("Hello").stream()
+.filter(s -> s.length() > 2).forEach(s -> printf("%s", s))
 Hello
-jshell> Optional.of("Hello").stream().filter(s -> s.length() > 8).forEach(s -> printf("%s", s))
+jshell> Optional.of("Hello").stream()
+.filter(s -> s.length() > 8).forEach(s -> printf("%s", s))
 
 jshell> Optional<String> o = Optional.empty()
 o ==> Optional.empty
@@ -127,7 +131,7 @@ I see `.stream()` useful especially in case when you want to get collection of o
 
 ## ifPresentOrElse((element) -> ...), () -> ...))
 
-This one I really missed in Java 8. You have an *Optional* and you want do something if value is present and something else if not. In my opinion very basic requirement I want from *Optional*. Typically when I get *Optional* from service and I want to do something with returned entity and log in case of no entity found. So far I have to do something like this
+This one I really missed in Java 8. You have an *Optional* and you want do something if value is present and something else if not. In my opinion very basic requirement I want from *Optional*. Typically when I get *Optional* from service and I want to do something with returned object and log in case of no object was found. So far I have to do something like this
 {% highlight java %}
 Optional<User> foundUser = service.findUser(id);
 if (foundUser.isPresent()) {
