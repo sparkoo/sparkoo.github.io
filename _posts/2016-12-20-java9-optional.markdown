@@ -2,6 +2,7 @@
 layout:     post
 title:      "Java 9 Optional new API"
 date:       2016-12-20
+comments:   true
 categories: java9 optional api
 ---
 
@@ -154,3 +155,26 @@ I've got rid of unnecessary `Optional<User>` variable.
 *Optional* has got 3 new methods. I think most usage will find `ifPresentOrElse`, which I really missed in Java 8. `stream` and `or` are also nice enhancements, but in my opinion not so important as `ifPresentOrElse`. They'll be useful in more special cases.
 
 [JShell]: {{ site.url }}/java9-jshell-1/
+
+{% if page.comments %}
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://sparkoo-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+{% endif %}
