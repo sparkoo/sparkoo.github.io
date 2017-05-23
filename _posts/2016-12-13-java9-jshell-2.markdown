@@ -6,14 +6,14 @@ comments:   true
 categories: java9 jshell
 ---
 
-In [first part] we've looked on absolute basics of **JShell**. Now I'm going show another features that help you customize **JShell** and make work with it more easy and fun.
+In the [first part] we've looked over absolute basics of **JShell**. Now, I'm going to show you another features, that can help you customize **JShell** and make working with it more easy and fun.
 
 <!--more-->
 
 ![jshell]({{ site.url }}/assets/jshell/jshell.png) 
 
 ## Tab completion
-No-one can remember every method in every class and programmers are by nature lazy people. You're probably used to tab completion from your linux/osx/windows/whatever terminal and good news is that **JShell** can do it too. So let's look
+No one can remember every single method in every class and programmers are, by nature, lazy people. You're probably used to tab completion from your linux/osx/windows/whatever terminal and good news is, that **JShell** can do it too. So let's look at it:
 
 {% highlight java %}
 jshell> System.
@@ -40,9 +40,9 @@ println(
 jshell> System.out.println(
 {% endhighlight %}
 
-As you can see, **JShell** helps with listing methods. When I write `System.` and hit `Tab`, I'll get list of all methods. I can start writing method name, like `System.out.print` and I'll get all methods that starts with `..print`. If only one option left, **JShell** complete that option for me. For example `System.out.printl` + `Tab` -> `System.out.println(`.
+As you can see, **JShell** helps you with listing methods. When I write `System.` and hit `Tab`, I'll get a list of all methods. So if I start writing name of a method, like `System.out.print`, I'll get all the methods, that start with `..print`. When only one possibility is left, **JShell** fills in the method name for me. For example `System.out.printl` + `Tab` -> `System.out.println(`.
 
-Of course it works with all classes. Let's use class from first part of article
+Naturally, it works this way with all classes. Let's use our class Square from the first part of this article:
 
 {% highlight java %}
 jshell> class Square {
@@ -62,7 +62,7 @@ perimeter()   toString()    wait(
 {% endhighlight %}
 
 ## JShell commands
-So far we used just java "commands". However, **JShell** can accept another type of commands. These always start with `/` and it means that I'm talking to **JShell**. Every other case means that I'm talking to **JVM**.
+So far, we have used only java "commands". However, **JShell** can accept another type of commands. They must always start with `/` and it means, that I'm communicating with  **JShell**. Any other command means communication with the **JVM**.
 
 So let's look what it offers. Of course tab completion works
 {% highlight java %}
@@ -72,13 +72,13 @@ jshell> /
 /reload       /reset        /save         /set          /types        /vars
 {% endhighlight %}
 
-`/help` is useful but too long output, you may try it yourself. For each command you can use `/help [command]` (e.g. `/help /list`) and you'll see detailed help for given command.
+`/help` is useful, but it gives us way too much information, you can try it yourself. For each command, you can use `/help [command]` (e.g. `/help /list`) and you'll see detailed help for given command.
 
-### customize
-There are 4 predefined modes of verbosity *silent*, *concise*, *normal* and *verbose*. Default is *normal*. If you want slight less verbosity, *concise* is a good choice. You can also set your own profile, there are many configuration options.
+### Customization
+There are 4 predefined modes of verbosity -- *silent*, *concise*, *normal* and *verbose*. Default is *normal*. If you want slightly less verbosity, *concise* is a good choice. You can also set your own mode, since there are many configuration options.
 
 
-**Normal** is used in all previous examples. It's little too stretched to my taste, but it's ok default choice.
+**Normal** is used in all previous examples. It's little too stretched for my taste, but it's decent default choice.
 {% highlight java %}
 jshell> /set feedback normal
 |  Feedback mode: normal
@@ -97,7 +97,7 @@ Hello
 {% endhighlight %}
 
 
-**Concise** is my favorite. It's more compact, but still prints all what I need.
+**Concise** is my favorite. It's more compact, but still prints everything what I need.
 {% highlight java %}
 jshell> /set feedback concise 
 jshell> 5
@@ -110,7 +110,7 @@ Hello
 {% endhighlight %}
 
 
-In **silent** mode you can't even see implicit variables, even when you want to see variable value you have to print it.
+In **silent** mode, you can't even see any implicit variables, so if you want to see variable value, you have to print it.
 {% highlight java %}
 jshell> /set feedback silent
 -> 5
@@ -121,7 +121,7 @@ Hello
 {% endhighlight %}
 
 
-**Verbose** is in my opinion too chatty. It basically writes in second line meaning of the first line so maybe for newbies it might be useful.
+**Verbose** is way too chatty, in my opinion. It basically prints out second line with meaning of the first line, so maybe for newbies, it might be useful.
 {% highlight java %}
 jshell> /set feedback verbose
 |  Feedback mode: verbose
@@ -144,7 +144,7 @@ Hello
 {% endhighlight %}
 
 
-**JShell** is much more customizable. To see more details check `/help /set` and you'll see many many options.
+**JShell** is much more customizable, than is demonstrated here. To see more customization options, check `/help /set` and you'll find out, there is really a lot of them.
 
 
 ### /history /list
@@ -169,7 +169,7 @@ a
 /history
 {% endhighlight %}
 
-That's nothing surprising. Very similar is `/list`, but here I can see the source of snippets and only valid ones. So if I dropped variable `a`, I can see it in `/history`, but not in `/list`
+That's nothing surprising. Very similar option is `/list`, but using that, we can see the source of the snippets and only the valid ones. So if I dropped variable `a`, I can see it in `/history`, but not in `/list`
 {% highlight java %}
 jshell> /list
 
@@ -185,7 +185,7 @@ jshell> /list
    4 : p.x
 {% endhighlight %}
 
-`/list` is much more powerful. It shows snipped ids, so I can ask for specific one and as you can see, I can see also dropped variable `a`
+`/list` is much more powerful. It shows us snippet IDs, so we can ask for specific one and as you can see, it shows us also dropped variable `a`
 {% highlight java %}
 jshell> /list 3
 
@@ -196,7 +196,7 @@ jshell> /list 1
    1 : int a = 5
 {% endhighlight %}
 
-To see what variables or methods I have defined, use `/v` or `/m`. For redo all steps use `/reload` and if you want to start from the beginning with the clean sheet, simple `/reset` do so.
+To see what variables or methods we have defined, use `/v` or `/m`. To redo all steps, use `/reload`, and if you want to start from the beginning with the clean sheet, simple `/reset` will do the trick.
 
 {% highlight java %}
 jshell> int a = 5
@@ -255,7 +255,7 @@ jshell> /list
 {% endhighlight %}
 
 ### /edit
-Let's say we want to change some variable/method. We can simply assign new value, like you probably expect
+Let's say, we want to change some variable/method. We can simply assign a new value to it, as you probably expected
 {% highlight java %}
 jshell> int i = 50
 i ==> 50
@@ -288,7 +288,7 @@ jshell> /edit
 {% endhighlight %}
 ![jshellEditPad]({{ site.url }}/assets/jshell/jshellEditPad.png)
 
-You can see all history there, but when you hit accept, it just evaluate changed snippets (lines). It won't reevaluate all affected snippets, which does make sense. So for example when I have 
+You can see whole history there, but when you hit accept, it just evaluates changed snippets (lines). It won't reevaluate all affected snippets, which does make sense. So for example when I have 
 {% highlight java %}
 int a = 5;
 int b = 6;
@@ -315,7 +315,7 @@ c ==> 11
 jshell> /save example
 {% endhighlight %}
 
-This creates in current folder file with name "example" which looks as simple as you might expect
+This creates a file named "example" in the current folder, it looks as simple, as you might expect  
 {% highlight java %}
 mvala[~] λ cat example 
 int a = 5;
@@ -323,7 +323,7 @@ int b = 6;
 int c = a + b;
 {% endhighlight %}
 
-and reading file is the same
+and reading a file is the same
 {% highlight java %}
 jshell> /open example
 
@@ -341,7 +341,7 @@ jshell> /list
 
 ## Conclusion
 
-Enough for now. We've seen some customization, checked tab completion, file save and read and few other **JShell** commands. Next time stuff like *classpath*, *imports*, ...
+That's enough for now. We've seen some customization options, checked tab completion, file saving and reading, and a few other **JShell** commands. Next time, we'll explore stuff like *classpath*, *imports*, ...
 
 [first part]: /java9-jshell-1
 
