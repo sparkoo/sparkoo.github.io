@@ -21,3 +21,26 @@ The story itself is not so catchy and it's not what holds me with the book. It's
 This humor works for me in first 2 books "The Hitchhiker's Guide to the Galaxy" and "The Restaurant at the End of the Universe". Third book "Life, the Universe and Everything" feels a little forced and different. It's grand finale of the big story, but it doesn't work anymore. I don't know whether I was tired of the humour or the universe, or third book is really the weakest of the "trilogy". Contrariwise the fourth "So Long, and Thanks for All the Fish" was a fresh, pleasant reading. Maybe because it was something little different from first three.
 
 Do I recommend this book? Sure! It's great part of the geek history and I think that at least first book is totally worth reading. The movie is not so great, so if you're dissapointed by the movie, maybe try read a book.
+
+{% if page.comments %}
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://sparkoo-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+{% endif %}
