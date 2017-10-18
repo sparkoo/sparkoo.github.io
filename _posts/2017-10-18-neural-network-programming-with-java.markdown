@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Book - Neural Network Programming with Java"
-date:       2017-10-20
+date:       2017-10-18
 categories: books
 ---
 
