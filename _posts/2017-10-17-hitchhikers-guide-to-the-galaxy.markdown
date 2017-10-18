@@ -11,7 +11,7 @@ I've got this book on christmas in edition "A Trilogy in Four Parts" in original
 
 <!--more-->
 
-![jshell]({{ site.url }}/assets/hitchhikers-guide-to-the-galaxy/cover.jpg)
+![Hitchhiker's Guide to the Galaxy - cover]({{ site.url }}/assets/hitchhikers-guide-to-the-galaxy/cover.jpg)
 
 
 The story starts on the Earth, but very early get's to the distant parts of the galaxy, or universe?, or totally different universe? Who knows? When you use *infinite improbability drive* you can't be sure by anything. Ingenious physics is one of the greatest thing in the *Hitchhiker's* universe. The most complicated calculations are based on the improbability and what is most improbable than waitress's bill?
