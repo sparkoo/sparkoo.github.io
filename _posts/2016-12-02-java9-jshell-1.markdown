@@ -2,7 +2,6 @@
 layout:     post
 title:      "Java9 - jshell [1]"
 date:       2016-12-2
-comments:   true
 categories: java9 jshell
 ---
 

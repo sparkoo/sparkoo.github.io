@@ -2,7 +2,6 @@
 layout:     post
 title:      "Java 9 Optional new API"
 date:       2016-12-20
-comments:   true
 categories: java9 optional api
 ---
 
