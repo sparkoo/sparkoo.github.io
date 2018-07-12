@@ -2,7 +2,7 @@
 layout:     post
 title:      "Learn Functional Programming (1) - What, how and why?"
 date:       2018-07-05
-categories: programming functional fpp
+categories: functional programming clojure lisp
 ---
 
 End of procrastination! I want to learn **Functional programming** (FP). I want to learn neural networks, genetic algorithms. I want to develop my own programming language (No! Not another new language. I just want to know how these things works...). These are not easy tasks and I was procrastinating about them for too long. So just let's do it!
