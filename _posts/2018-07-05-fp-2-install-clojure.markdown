@@ -2,7 +2,7 @@
 layout:     post
 title:      "Learn Functional Programming (2) - Install Clojure"
 date:       2018-07-12
-categories: functional programming clojure lisp
+categories: functional programming clojure lisp windows
 ---
 
 My language of choice to learn functional programming is **Lisp**, respectively it's JVM implementation **Clojure**. I'm using **Windows 10** as my main home desktop OS, so let's see how to get Clojure running on that. I might do a Linux one later.
