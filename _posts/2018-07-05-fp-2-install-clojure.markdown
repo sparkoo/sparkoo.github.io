@@ -40,12 +40,12 @@ Generating a project called test-project based on the 'default' template.
 The default template is intended for library projects, not applications.
 To see other templates (app, plugin, etc), try `lein help new`.
 
-$ ls test-project\
+$ ls test-project/
 CHANGELOG.md  LICENSE  README.md  doc/  project.clj  resources/  src/  test/
 {% endhighlight %}
 
 {% highlight bash %}
-$ cat test-project\project.clj
+$ cat test-project/project.clj
 (defproject test-project "0.1.0-SNAPSHOT"
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
