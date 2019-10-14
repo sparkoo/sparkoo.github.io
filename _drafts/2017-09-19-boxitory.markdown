@@ -1,6 +1,0 @@
----
-layout:     post
-title:      "Vagrant box repository"
-date:       2017-9-19
-categories: vagrant boxitory
----
